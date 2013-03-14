@@ -122,7 +122,7 @@ public class Nyandroid extends Activity {
             super(context, as);
 
             setLayerType(View.LAYER_TYPE_HARDWARE, null);
-            setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+            //setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
             setBackgroundColor(0xFF003366);
         }
 
@@ -194,16 +194,21 @@ public class Nyandroid extends Activity {
             });
         }
 
-        @Override
-        protected void onSizeChanged (int w, int h, int oldw, int oldh) {
-            super.onSizeChanged(w,h,oldw,oldh);
-//            android.util.Log.d("Nyandroid", "resized: " + w + "x" + h);
-            post(new Runnable() { public void run() { 
-                reset();
-                mAnim.start(); 
-            } });
+        public void startAnimation() {
+            stopAnimation();
+            if (mAnim == null) {
+                post(new Runnable() { public void run() {
+                    reset();
+                    startAnimation();
+                } });
+            } else {
+                mAnim.start();
+            }
         }
 
+        public void stopAnimation() {
+            if (mAnim != null) mAnim.cancel();
+        }
 
         @Override
         protected void onDetachedFromWindow() {
@@ -227,12 +232,8 @@ public class Nyandroid extends Activity {
                   WindowManager.LayoutParams.FLAG_ALLOW_LOCK_WHILE_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
                 );
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         mBoard = new Board(this, null);
+        mBoard.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(mBoard);
 
         mBoard.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
@@ -243,6 +244,18 @@ public class Nyandroid extends Activity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mBoard.stopAnimation();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBoard.startAnimation();
     }
 
     @Override

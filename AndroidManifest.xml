@@ -6,16 +6,24 @@
     <uses-sdk android:minSdkVersion="14" 
               android:targetSdkVersion="17"/>
     <application android:icon="@drawable/nyandroid00" android:label="@string/app_name" >
-        <activity android:name="Nyandroid"
+        <activity android:name=".Nyandroid"
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
                   android:hardwareAccelerated="true"
                   android:launchMode="singleInstance">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".NyandroidDream"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
     </application>
 </manifest> 
