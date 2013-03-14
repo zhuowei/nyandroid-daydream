@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.systemui;
+package net.zhuoweizhang.nyandroid;
 
 import android.animation.AnimatorSet;
 import android.animation.PropertyValuesHolder;
