@@ -235,15 +235,6 @@ public class Nyandroid extends Activity {
         mBoard = new Board(this, null);
         mBoard.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         setContentView(mBoard);
-
-        mBoard.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
-            @Override
-            public void onSystemUiVisibilityChange(int vis) {
-                if (0 == (vis & View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)) {
-                    Nyandroid.this.finish();
-                }
-            }
-        });
     }
 
     @Override
@@ -256,11 +247,5 @@ public class Nyandroid extends Activity {
     public void onResume() {
         super.onResume();
         mBoard.startAnimation();
-    }
-
-    @Override
-    public void onUserInteraction() {
-//        android.util.Log.d("Nyandroid", "finishing on user interaction");
-        finish();
     }
 }
