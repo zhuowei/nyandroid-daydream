@@ -1,5 +1,5 @@
-nyandroid-daydream (Nyandroid Daydream)
-=======================================
+Nyandroid Daydream
+==================
 
 About
 ------
@@ -34,7 +34,7 @@ To build the code, it can be imported into Eclipse:
 2. Open Eclipse (with the ADT installed, download [here][SDK_Bundle])
 3. File -> New -> Other
 4. Select "Android Project from Existing Code"
-5. Point Eclipse at the folder where you put the code, then click next
+5. Point Eclipse at the folder where you put the code, then click through the import screens
 6. Run from Eclipse (See [here][BuildAndRun] for more info)
 
 (The .gitignore file should keep Eclipse files from getting tangled up in git.)
