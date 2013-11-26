@@ -3,11 +3,15 @@
       package="net.zhuoweizhang.nyandroid"
       android:versionCode="3"
       android:versionName="1.2">
+      
     <uses-sdk android:minSdkVersion="16" 
               android:targetSdkVersion="18"/>
+    
     <uses-feature android:name="android.hardware.screen.portrait" android:required="false"/>
-    <application android:icon="@drawable/nyandroid00" android:label="@string/app_name" >
-        <activity android:name=".Nyandroid"
+    
+    <application android:icon="@drawable/nyandroid00" android:label="@string/app_name">
+		<!-- Nyandroid and Dream -->
+		<activity android:name=".Nyandroid"
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
                   android:hardwareAccelerated="true"
@@ -26,6 +30,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
+
+		<!-- DessertCase and Dream -->
         <activity android:name=".DessertCase"
                   android:label="@string/dessert_case"
                   android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
@@ -49,6 +55,7 @@
             </intent-filter>
         </service>
 
+		<!-- BeanBag/BeanFlinger and Dream-->
         <activity
             android:name=".BeanBag"
             android:exported="true"
@@ -62,17 +69,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <service
             android:name=".BeanBagDream"
             android:exported="true"
             android:label="@string/jelly_bean_dream_name"
-            android:icon="@drawable/redbeandroid"
-            >
+            android:icon="@drawable/redbeandroid">
             <intent-filter>
                 <action android:name="android.service.dreams.DreamService" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
     </application>
+
 </manifest> 
