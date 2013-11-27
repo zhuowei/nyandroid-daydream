@@ -213,7 +213,7 @@ public class Nyandroid extends Activity {
         @Override
         protected void onDetachedFromWindow() {
             super.onDetachedFromWindow();
-            mAnim.cancel();
+            if (mAnim != null) mAnim.cancel();
         }
 
         @Override
