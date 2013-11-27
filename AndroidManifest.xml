@@ -90,12 +90,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <service
             android:name=".RocketLauncherDream"
             android:exported="true"
-            android:label="@string/rocket_launcher"
-            >
+            android:label="@string/rocket_launcher">
             <intent-filter>
                 <action android:name="android.service.dreams.DreamService" />
                 <category android:name="android.intent.category.DEFAULT" />
