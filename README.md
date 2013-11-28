@@ -28,25 +28,15 @@ published by [Zhuowei Zhang][].
 
 Trivia
 ------
-Daydreams are essentially Android screensavers, that can be made interactive, and run when docked/charging. 
-In the Android code, you'll see references to Screensavers, Sleep Mode Apps, and other names as well as 
-Daydreams, the last is the name that was given to the feature at release.
+Daydreams are essentially Android screensavers, that can be made interactive, and run when docked/charging. In the Android code, you'll see references to Screensavers, Sleep Mode Apps, and other names as well as Daydreams, the last is the name that was given to the feature at release.
 
-Daydreams were added in Android 4.2, Jelly Bean maintenance release 1, but were actually in development for 
-over a year, since before 4.0/ICS. Nyandroid and RocketLauncher were two early proto-daydreams that 
-shipped with 4.0 even though the screensaver feature did not. RocketLauncher and "Android Dreams" were 
-[discovered in November 2011][rocketDiscovered], with an [interesting commit][predictLeak] that predicted 
-exactly what happened.
+Daydreams were added in Android 4.2, Jelly Bean maintenance release 1, but were actually in development for over a year, since before 4.0/ICS. 
+Nyandroid and RocketLauncher were two early proto-daydreams that shipped with 4.0 even though the screensaver feature did not. RocketLauncher and "Android Dreams" were [discovered in November 2011][rocketDiscovered], with an [interesting commit][predictLeak] that predicted exactly what happened.
 
-Daydreams are actually a sort-of-replacement for "dock mode" apps from Ecliar, that function rather 
-differently, but still allow apps to take over the screen. Simply put, the way that Car Home worked 
-confused users, and it was decided that a screensaver could fill some of the gaps left if that feature 
-was removed. See the excellent [Google I/O 2013 Talk: Androids Do Daydream][AndroidsDoDaydream] for more 
-information. (That's where much of the information in this section came from. It also mentions Android's 
-blink tag, for the interested.)
+Daydreams are actually a sort-of-replacement for "dock mode" apps from Ecliar, that function rather differently, but still allow apps to take over the screen. Simply put, the way that Car Home worked confused users, and it was decided that a screensaver could fill some of the gaps left if that feature was removed. See the excellent [Google I/O 2013 Talk: Androids Do Daydream][AndroidsDoDaydream] for more information. (That's where much of the information in this section came from. It also mentions Android's blink tag, for the interested.)
 
 [predictLeak]: https://github.com/CyanogenMod/android_packages_apps_Settings/commit/d1d9fc3ac9f2b6f2f2b8d042ed4e6180d0ac904f
-[rocketDiscovered]: http://www.androidpolice.com/2011/11/30/another-ics-easter-egg-wird-star-wars-like-light-speed-launcher-found-hidden-in-the-depths-of-ice-cream-sandwich/
+[rocketDiscovered]: http://www.androidpolice.com/2011/11/30/another-ics-easter-egg-weird-star-wars-like-light-speed-launcher-found-hidden-in-the-depths-of-ice-cream-sandwich/
 [AndroidsDoDaydream]: https://www.youtube.com/watch?v=h_kcDkwoTr0
 
 Building
