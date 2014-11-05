@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.systemui.egg;
+package net.zhuoweizhang.nyandroid;
 
 import android.animation.TimeAnimator;
 import android.content.Context;
@@ -22,7 +22,7 @@ import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
-import android.graphics.Outline;
+//import android.graphics.Outline;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
@@ -35,15 +35,17 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewOutlineProvider;
+//import android.view.ViewOutlineProvider;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.systemui.R;
+//import com.android.systemui.R;
 
 import java.util.ArrayList;
+
+import net.zhuoweizhang.vectordrawable.VectorDrawable;
 
 public class LLand extends FrameLayout {
     public static final String TAG = "LLand";
@@ -176,7 +178,7 @@ public class LLand extends FrameLayout {
     public void setScoreField(TextView tv) {
         mScoreField = tv;
         if (tv != null) {
-            tv.setTranslationZ(PARAMS.HUD_Z);
+            //tv.setTranslationZ(PARAMS.HUD_Z);
             if (!(mAnimating && mPlaying)) {
                 tv.setTranslationY(-500);
             }
@@ -228,16 +230,16 @@ public class LLand extends FrameLayout {
         boolean showingSun = (mTimeOfDay == DAY || mTimeOfDay == SUNSET) && frand() > 0.25;
         if (showingSun) {
             final Star sun = new Star(getContext());
-            sun.setBackgroundResource(R.drawable.sun);
+            sun.setBackground(VectorDrawable.create(getResources(), R.drawable.sun));
             final int w = getResources().getDimensionPixelSize(R.dimen.sun_size);
             sun.setTranslationX(frand(w, mWidth-w));
             if (mTimeOfDay == DAY) {
                 sun.setTranslationY(frand(w, (mHeight * 0.66f)));
-                sun.getBackground().setTint(0);
+                //sun.getBackground().setTint(0);
             } else {
                 sun.setTranslationY(frand(mHeight * 0.66f, mHeight - w));
-                sun.getBackground().setTintMode(PorterDuff.Mode.SRC_ATOP);
-                sun.getBackground().setTint(0xC0FF8000);
+                //sun.getBackground().setTintMode(PorterDuff.Mode.SRC_ATOP);
+                //sun.getBackground().setTint(0xC0FF8000);
 
             }
             addView(sun, new LayoutParams(w, w));
@@ -247,7 +249,7 @@ public class LLand extends FrameLayout {
             final float ff = frand();
             if ((dark && ff < 0.75f) || ff < 0.5f) {
                 final Star moon = new Star(getContext());
-                moon.setBackgroundResource(R.drawable.moon);
+                moon.setBackground(VectorDrawable.create(getResources(), R.drawable.moon));
                 moon.getBackground().setAlpha(dark ? 255 : 128);
                 moon.setScaleX(frand() > 0.5 ? -1 : 1);
                 moon.setRotation(moon.getScaleX() * frand(5, 30));
@@ -272,7 +274,7 @@ public class LLand extends FrameLayout {
                 s = new Building(getContext());
 
                 s.z = (float)i/N;
-                s.setTranslationZ(PARAMS.SCENERY_Z * (1+s.z));
+                //s.setTranslationZ(PARAMS.SCENERY_Z * (1+s.z));
                 s.v = 0.85f * s.z; // buildings move proportional to their distance
                 hsv[0] = 175;
                 hsv[1] = 0.25f;
@@ -330,8 +332,8 @@ public class LLand extends FrameLayout {
             mLastPipeTime = getGameTime() - PARAMS.OBSTACLE_PERIOD;
 
             if (mSplash != null && mSplash.getAlpha() > 0f) {
-                mSplash.setTranslationZ(PARAMS.HUD_Z);
-                mSplash.animate().alpha(0).translationZ(0).setDuration(400);
+                //mSplash.setTranslationZ(PARAMS.HUD_Z);
+                mSplash.animate().alpha(0)/*.translationZ(0)*/.setDuration(400);
 
                 mScoreField.animate().translationY(0)
                         .setInterpolator(new DecelerateInterpolator())
@@ -473,7 +475,7 @@ public class LLand extends FrameLayout {
                     Gravity.TOP|Gravity.LEFT));
             s1.setTranslationX(mWidth+inset);
             s1.setTranslationY(-s1.h-yinset);
-            s1.setTranslationZ(PARAMS.OBSTACLE_Z*0.75f);
+            //s1.setTranslationZ(PARAMS.OBSTACLE_Z*0.75f);
             s1.animate()
                     .translationY(0)
                     .setStartDelay(d1)
@@ -487,7 +489,7 @@ public class LLand extends FrameLayout {
                     Gravity.TOP|Gravity.LEFT));
             p1.setTranslationX(mWidth);
             p1.setTranslationY(-PARAMS.OBSTACLE_WIDTH);
-            p1.setTranslationZ(PARAMS.OBSTACLE_Z);
+            //p1.setTranslationZ(PARAMS.OBSTACLE_Z);
             p1.setScaleX(0.25f);
             p1.setScaleY(0.25f);
             p1.animate()
@@ -508,7 +510,7 @@ public class LLand extends FrameLayout {
                     Gravity.TOP|Gravity.LEFT));
             s2.setTranslationX(mWidth+inset);
             s2.setTranslationY(mHeight+yinset);
-            s2.setTranslationZ(PARAMS.OBSTACLE_Z*0.75f);
+            //s2.setTranslationZ(PARAMS.OBSTACLE_Z*0.75f);
             s2.animate()
                     .translationY(mHeight-s2.h)
                     .setStartDelay(d2)
@@ -522,7 +524,7 @@ public class LLand extends FrameLayout {
                     Gravity.TOP|Gravity.LEFT));
             p2.setTranslationX(mWidth);
             p2.setTranslationY(mHeight);
-            p2.setTranslationZ(PARAMS.OBSTACLE_Z);
+            //p2.setTranslationZ(PARAMS.OBSTACLE_Z);
             p2.setScaleX(0.25f);
             p2.setScaleY(0.25f);
             p2.animate()
@@ -699,10 +701,10 @@ public class LLand extends FrameLayout {
         public Player(Context context) {
             super(context);
 
-            setBackgroundResource(R.drawable.android);
-            getBackground().setTintMode(PorterDuff.Mode.SRC_ATOP);
-            getBackground().setTint(0xFF00FF00);
-            setOutlineProvider(new ViewOutlineProvider() {
+            setBackground(VectorDrawable.create(getResources(), R.drawable.android));
+            //getBackground().setTintMode(PorterDuff.Mode.SRC_ATOP);
+            //getBackground().setTint(0xFF00FF00);
+            /*setOutlineProvider(new ViewOutlineProvider() {
                 @Override
                 public void getOutline(View view, Outline outline) {
                     final int w = view.getWidth();
@@ -711,7 +713,7 @@ public class LLand extends FrameLayout {
                     final int iy = (int) (h * 0.2f);
                     outline.setRect(ix, iy, w - ix, h - iy);
                 }
-            });
+            });*/
         }
 
         public void prepareCheckIntersections() {
@@ -762,7 +764,7 @@ public class LLand extends FrameLayout {
             animate()
                     .scaleX(1.25f)
                     .scaleY(1.25f)
-                    .translationZ(PARAMS.PLAYER_Z_BOOST)
+                    //.translationZ(PARAMS.PLAYER_Z_BOOST)
                     .setDuration(100);
             setScaleX(1.25f);
             setScaleY(1.25f);
@@ -775,7 +777,7 @@ public class LLand extends FrameLayout {
             animate()
                     .scaleX(1f)
                     .scaleY(1f)
-                    .translationZ(PARAMS.PLAYER_Z)
+                    //.translationZ(PARAMS.PLAYER_Z)
                     .setDuration(200);
         }
     }
@@ -823,16 +825,16 @@ public class LLand extends FrameLayout {
         public Pop(Context context, float h) {
             super(context, h);
             int idx = 2*irand(0, POPS.length/2);
-            setBackgroundResource(POPS[idx]);
+            setBackground(VectorDrawable.create(getResources(), POPS[idx]));
             setScaleX(frand() < 0.5f ? -1 : 1);
             mRotate = POPS[idx+1] == 0 ? 0 : (frand() < 0.5f ? -1 : 1);
-            setOutlineProvider(new ViewOutlineProvider() {
+            /*setOutlineProvider(new ViewOutlineProvider() {
                 @Override
                 public void getOutline(View view, Outline outline) {
                     final int pad = (int) (getWidth() * 0.02f);
                     outline.setOval(pad, pad, getWidth()-pad, getHeight()-pad);
                 }
-            });
+            });*/
         }
 
         public boolean intersects(Player p) {
@@ -874,12 +876,12 @@ public class LLand extends FrameLayout {
         public void onAttachedToWindow() {
             super.onAttachedToWindow();
             setWillNotDraw(false);
-            setOutlineProvider(new ViewOutlineProvider() {
+            /*setOutlineProvider(new ViewOutlineProvider() {
                 @Override
                 public void getOutline(View view, Outline outline) {
                     outline.setRect(0, 0, getWidth(), getHeight());
                 }
-            });
+            });*/
         }
         @Override
         public void onDraw(Canvas c) {
@@ -923,14 +925,14 @@ public class LLand extends FrameLayout {
             w = irand(PARAMS.BUILDING_WIDTH_MIN, PARAMS.BUILDING_WIDTH_MAX);
             h = 0; // will be setup later, along with z
 
-            setTranslationZ(PARAMS.SCENERY_Z);
+            //setTranslationZ(PARAMS.SCENERY_Z);
         }
     }
 
     private class Cloud extends Scenery {
         public Cloud(Context context) {
             super(context);
-            setBackgroundResource(frand() < 0.01f ? R.drawable.cloud_off : R.drawable.cloud);
+            setBackground(VectorDrawable.create(getResources(), frand() < 0.01f ? R.drawable.cloud_off : R.drawable.cloud));
             getBackground().setAlpha(0x40);
             w = h = irand(PARAMS.CLOUD_SIZE_MIN, PARAMS.CLOUD_SIZE_MAX);
             z = 0;
@@ -941,7 +943,7 @@ public class LLand extends FrameLayout {
     private class Star extends Scenery {
         public Star(Context context) {
             super(context);
-            setBackgroundResource(R.drawable.star);
+            setBackground(VectorDrawable.create(getResources(), R.drawable.star));
             w = h = irand(PARAMS.STAR_SIZE_MIN, PARAMS.STAR_SIZE_MAX);
             v = z = 0;
         }

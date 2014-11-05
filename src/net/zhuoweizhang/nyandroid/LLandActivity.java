@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.android.systemui.egg;
+package net.zhuoweizhang.nyandroid;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.android.systemui.R;
+//import com.android.systemui.R;
 
 public class LLandActivity extends Activity {
     @Override
